@@ -1,6 +1,15 @@
-let colors = document.querySelector(".chosen-color");
-let pixel = document.querySelectorAll(".pixel");
-let checkbox = document.querySelector("#eraser-mode");
+const colors = document.querySelector(".chosen-color");
+const checkbox = document.querySelector("#eraser-mode");
+const canvas = document.querySelector(".canvas");
+
+for (let i = 0; i < 256; i++) {
+  let pixel = document.createElement("div");
+  pixel.classList.add("pixel");
+  canvas.appendChild(pixel);
+  pixel.addEventListener("click", function () {
+    pixel.style.background = colors.value;
+  });
+}
 
 checkbox.onchange = function () {
   if (checkbox.checked) {
@@ -9,9 +18,3 @@ checkbox.onchange = function () {
     colors.value = "black";
   }
 };
-
-for (let i = 0; i < pixel.length; i++) {
-  pixel[i].onclick = function () {
-    pixel[i].style.backgroundColor = colors.value;
-  };
-}
